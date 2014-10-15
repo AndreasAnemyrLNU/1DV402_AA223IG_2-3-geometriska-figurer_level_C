@@ -14,10 +14,7 @@ namespace _1DV402.S2.L3C
 
         public abstract double Area
         {
-            get
-            {
-                return _length * _width;
-            }
+            get;
         }
 
 
@@ -40,10 +37,7 @@ namespace _1DV402.S2.L3C
 
         public abstract double Perimeter
         {
-            get
-            {
-                return Length * 2 + Width * 2;
-            }
+            get;
         }
 
         public double Width
