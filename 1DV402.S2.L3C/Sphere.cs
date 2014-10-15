@@ -27,12 +27,12 @@ namespace _1DV402.S2.L3C
         {
             get 
             {
-                return 4 / 3 * _baseShape.Area * base.Height / 2;
+                    return _baseShape.Area * (4/3) * Height;
             }
         }
 
-        public Sphere(double length, double width, double height)
-            : base(ShapeType.Sphere, new Ellipse(length, width), height)
+        public Sphere(double radius)
+            : base(ShapeType.Sphere, new Ellipse(radius, radius), radius)
         {
            //Empty 
         }

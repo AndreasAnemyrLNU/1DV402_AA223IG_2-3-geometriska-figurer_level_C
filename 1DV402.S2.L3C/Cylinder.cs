@@ -32,8 +32,8 @@ namespace _1DV402.S2.L3C
             }
         }
 
-        public Cylinder(double length, double width, double height)
-            : base(ShapeType.Cylinder, new Ellipse(length, width), height)
+        public Cylinder(double hradius, double vradius, double height)
+            : base(ShapeType.Cylinder, new Ellipse(hradius, vradius), height)
         {
            //Empty 
         }

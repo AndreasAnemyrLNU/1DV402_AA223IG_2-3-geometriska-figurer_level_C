@@ -15,30 +15,18 @@ namespace _1DV402.S2.L3C
         {
 
 
-            Rectangle rect1 = new Rectangle(10.45,20.45);
-            Rectangle rect2 = new Rectangle(17.45, 27.45);
-            Ellipse elli3 = new Ellipse(5.7, 34.5);
-            Ellipse elli4 = new Ellipse(7.45, 14.45);
-
-            Shape2D[] shapeArray = { rect1, rect2, elli3, elli4 };
-
-            foreach (Shape2D rectInfo in shapeArray)
+            private Shape CreateShape(ShapeType shapeType)
             {
-                Console.WriteLine(rectInfo.ToString("R"));
+                throw new NotImplementedException();
             }
 
 
-            Array.Sort(shapeArray);
 
 
-            Console.WriteLine();
 
-            foreach (Shape2D rectInfo in shapeArray)
-            {
-                Console.WriteLine(rectInfo.ToString("R"));
-            }
+            Sphere test = new Sphere(29.6);
 
-
+            Console.WriteLine(test);
 
             Console.Read();
 
