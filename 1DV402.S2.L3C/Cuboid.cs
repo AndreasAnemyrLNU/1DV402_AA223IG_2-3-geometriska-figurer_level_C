@@ -11,7 +11,7 @@ namespace _1DV402.S2.L3C
         {
             get
             {
-                throw new NotImplementedException();
+
             }
         }
 
@@ -32,9 +32,9 @@ namespace _1DV402.S2.L3C
         }
 
         public Cuboid(double length, double width, double height)
-            : base(ShapeType.Cuboid, new Rectangle(length, double), height)
+            : base(ShapeType.Cuboid, new Rectangle(length, width), height)
         {
-            
+           //Empty 
         }
 
 
