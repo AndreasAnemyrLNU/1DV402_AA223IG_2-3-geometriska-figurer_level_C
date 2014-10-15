@@ -11,7 +11,8 @@ namespace _1DV402.S2.L3C
         {
             get
             {
-                throw new NotImplementedException();
+                return _baseShape.Perimeter * base.Height;
+                
             }
         }
 
@@ -19,15 +20,15 @@ namespace _1DV402.S2.L3C
         {
             get
             {
-                throw new NotImplementedException();
+                return MantelArea + 2 * _baseShape.Area;
             }
         }
 
         public override double Volume
         {
             get 
-            { 
-                throw new NotImplementedException(); 
+            {
+                return _baseShape.Area * base.Height;
             }
         }
 

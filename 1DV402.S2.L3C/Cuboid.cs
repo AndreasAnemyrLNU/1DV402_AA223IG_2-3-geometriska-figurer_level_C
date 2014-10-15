@@ -11,7 +11,7 @@ namespace _1DV402.S2.L3C
         {
             get
             {
-
+                return _baseShape.Perimeter * base.Height;
             }
         }
 
@@ -19,7 +19,7 @@ namespace _1DV402.S2.L3C
         {
             get
             {
-                throw new NotImplementedException();
+                return MantelArea + 2 * _baseShape.Area;
             }
         }
 
@@ -27,7 +27,7 @@ namespace _1DV402.S2.L3C
         {
             get 
             { 
-                throw new NotImplementedException(); 
+                return _baseShape.Area * base.Height; 
             }
         }
 
