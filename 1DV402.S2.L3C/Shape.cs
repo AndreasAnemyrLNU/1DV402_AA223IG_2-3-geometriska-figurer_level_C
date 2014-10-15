@@ -9,7 +9,7 @@ namespace _1DV402.S2.L3C
     public abstract class Shape
     {
 
-        enum ShapeType { Rectangle, Circle, Ellipse, Cuboid, Cylinder, Sphere, };
+        public enum ShapeType { Rectangle, Circle, Ellipse, Cuboid, Cylinder, Sphere, };
 
         //Ska returnera true om figuren är någon av typerna Cuboid, cylinder eller Sphere
         public bool IsShape3d
@@ -28,12 +28,15 @@ namespace _1DV402.S2.L3C
             //Tom
         }
 
-
         //Ska returnera en formaterad textbeskrivning av objektet
         public override string ToString(string format)
         {
             return base.ToString();
         }
+
+
+
+
 
 
 
