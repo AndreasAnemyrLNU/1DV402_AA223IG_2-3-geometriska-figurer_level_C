@@ -11,13 +11,11 @@ namespace _1DV402.S2.L3C
         private double _length;
         //Figurens bredd
         private double _width;
-
+        //Abstrakt method som måste implementeras i klass som ärver från denna
         public abstract double Area
         {
             get;
         }
-
-
         public double Length
         {
             get
@@ -59,10 +57,25 @@ namespace _1DV402.S2.L3C
 
         public int CompareTo(object obj)
         {
-            return 9999;
+            if(null == obj)
+            {
+                return 1;
+            }
+
+            if(this == obj)
+            {
+                return 0;
+            }
+            Shape2D other =  obj as Shape2D;
+            if (null == other)
+            {
+                throw new ArgumentException("Object is not a shape");
+            }
+            return Area.CompareTo(other.Area);
+
         }
 
-        public Shape2D(ShapeType shapeType, double length, double width)
+        protected Shape2D(ShapeType shapeType, double length, double width)
             :base(shapeType)
         {
             Length =length;

@@ -15,7 +15,17 @@ namespace _1DV402.S2.L3C
         {
 
 
-            Rectangle rect = new Rectangle(10.34,23.4);
+            Rectangle rect1 = new Rectangle(10.45,20.45);
+            Rectangle rect2 = new Rectangle(17.45, 27.45);
+            Rectangle rect3 = new Rectangle(1.45, 2.45);
+            Rectangle rect4 = new Rectangle(7.45, 14.45);
+
+            Shape2D[] shapeArray = { rect1, rect2, rect3, rect4 };
+
+
+            Array.Sort(shapeArray);
+
+
 
 
 
