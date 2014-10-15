@@ -71,6 +71,7 @@ namespace _1DV402.S2.L3C
             {
                 throw new ArgumentException("Object is not a shape");
             }
+            //Frågan är om ytterligare sortering ska göras?
             return Area.CompareTo(other.Area);
 
         }
@@ -84,12 +85,23 @@ namespace _1DV402.S2.L3C
 
         public override string ToString()
         {
-            return base.ToString();
+            return ToString("G");
         }
 
         public override string ToString(string format)
         {
-            return "Dena är inte implementerad ännu...";
+            if (format == "G" || format == "" || format == null)
+            {
+                return string.Format("Längd  :{0,10:F1}\nBredd  :{1,10:F1}\nOmkrets:{2,10:F1}\nArea   :{3,10:F1}", Length, Width, Perimeter, Area);
+            }
+            else if(format == "R")
+            {
+                return string.Format("{0,-10}{1,6:F1}{2,6:F1}{3,8:F1}{4,8:F1}",ShapeType,Length,Width,Perimeter,Area);
+            }
+            else
+            {
+                throw new FormatException();
+            }
         }
 
 

@@ -24,7 +24,7 @@ namespace _1DV402.S2.L3C
         }
 
         public Rectangle(double length, double width)
-           :base(ShapeType.Rectangle ,length, width)
+           :base(ShapeType.Rectangle, length, width)
         {
 
         }

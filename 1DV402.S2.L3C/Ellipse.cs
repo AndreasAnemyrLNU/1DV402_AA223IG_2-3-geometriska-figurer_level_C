@@ -29,10 +29,12 @@ namespace _1DV402.S2.L3C
         }
 
         public Ellipse(double diameter) 
-            :base(ShapeType.Ellipse, diameter, diameter)  
+            :this(diameter, diameter)  
         { }
 
- //      public Ellipse(double hdiamter, double vdiameter) { }
+        public Ellipse(double hdiamter, double vdiameter) 
+            :base(ShapeType.Ellipse, hdiamter, vdiameter)
+        { }
 
 
     }

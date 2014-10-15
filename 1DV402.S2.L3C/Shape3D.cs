@@ -7,5 +7,6 @@ namespace _1DV402.S2.L3C
 {
     public abstract class Shape3D
     {
+
     }
 }
