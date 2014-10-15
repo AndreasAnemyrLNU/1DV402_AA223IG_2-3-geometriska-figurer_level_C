@@ -62,7 +62,7 @@ namespace _1DV402.S2.L3C
             return 9999;
         }
 
-        protected Shape2D(ShapeType shapeType, double length, double width)
+        public Shape2D(ShapeType shapeType, double length, double width)
             :base(shapeType)
         {
             Length =length;
@@ -76,7 +76,7 @@ namespace _1DV402.S2.L3C
 
         public override string ToString(string format)
         {
-            return base.ToString(format);
+            return "Dena är inte implementerad ännu...";
         }
 
 

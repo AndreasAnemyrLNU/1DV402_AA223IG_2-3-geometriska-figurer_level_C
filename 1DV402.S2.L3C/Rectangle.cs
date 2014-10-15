@@ -7,7 +7,7 @@ namespace _1DV402.S2.L3C
 {
     public class Rectangle : Shape2D
     {
-        public double Area
+        public override double Area
         {
             get
             {
@@ -15,7 +15,7 @@ namespace _1DV402.S2.L3C
             }
         }
 
-        public double Perimeter
+        public override double Perimeter
         {
             get
             {
@@ -24,11 +24,10 @@ namespace _1DV402.S2.L3C
         }
 
         public Rectangle(double length, double width)
-            //et inte om detta är lösningen
-            :base()
+           :base(ShapeType.Rectangle ,length, width)
         {
-        }
 
+        }
 
     }
 }

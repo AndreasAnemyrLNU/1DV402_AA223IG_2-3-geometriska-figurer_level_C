@@ -15,8 +15,9 @@ namespace _1DV402.S2.L3C
         {
 
 
-            Shape2D ShapeTest = new Shape2D();
-            ShapeTest.Length = 0;
+            Rectangle rect = new Rectangle(10.34,23.4);
+
+
 
 
 

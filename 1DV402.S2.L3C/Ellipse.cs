@@ -8,7 +8,7 @@ namespace _1DV402.S2.L3C
     public class Ellipse : Shape2D
     {
         //Ellipse formel are PI * A * B
-        public double Area
+        public override double Area
         {
             get
             {
@@ -18,7 +18,7 @@ namespace _1DV402.S2.L3C
             }
         }
 
-        public double Perimeter
+        public override double Perimeter
         {
             get
             {
@@ -27,5 +27,13 @@ namespace _1DV402.S2.L3C
                 return Math.PI * Math.Sqrt(2 * a * a + 2 * b * b);
             }
         }
+
+        public Ellipse(double diameter) 
+            :base(ShapeType.Ellipse, diameter, diameter)  
+        { }
+
+ //      public Ellipse(double hdiamter, double vdiameter) { }
+
+
     }
 }
