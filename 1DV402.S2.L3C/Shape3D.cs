@@ -30,11 +30,11 @@ namespace _1DV402.S2.L3C
 
         }
 
-        public abstract double MantelArea();
+        public abstract double MantelArea { get; }
 
-        public abstract double TotalSurfaceArea();
+        public abstract double TotalSurfaceArea { get; }
 
-        public abstract double Volume();
+        public abstract double Volume { get; }
 
         public int CompareTo(object obj)
         {
@@ -83,5 +83,8 @@ namespace _1DV402.S2.L3C
                 throw new FormatException();
             }
         }
+
+
+
     }
 }

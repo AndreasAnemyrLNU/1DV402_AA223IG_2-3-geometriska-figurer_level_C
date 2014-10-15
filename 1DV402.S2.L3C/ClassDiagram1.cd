@@ -13,7 +13,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAIAEAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Shape.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -26,9 +26,9 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="_1DV402.S2.L3C.Shape3D">
-    <Position X="9.5" Y="2.5" Width="1.5" />
+    <Position X="8.25" Y="1" Width="4.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAABACAAAQEAAAAAAAAAAAAIAAIAAIAAAAAAAA=</HashCode>
       <FileName>Shape3D.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -47,21 +47,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="_1DV402.S2.L3C.Cuboid">
-    <Position X="7.5" Y="5.25" Width="1.5" />
+    <Position X="7.5" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAIAAIAAAAAAAA=</HashCode>
       <FileName>Cuboid.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_1DV402.S2.L3C.Cylinder">
-    <Position X="9.5" Y="5.25" Width="1.5" />
+    <Position X="9.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Cylinder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_1DV402.S2.L3C.Sphere">
-    <Position X="11.5" Y="5.25" Width="1.5" />
+    <Position X="11.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Sphere.cs</FileName>
