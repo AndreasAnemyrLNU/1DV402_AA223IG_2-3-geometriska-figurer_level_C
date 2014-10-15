@@ -73,7 +73,6 @@ namespace _1DV402.S2.L3C
             }
             //Frågan är om ytterligare sortering ska göras?
             return Area.CompareTo(other.Area);
-
         }
 
         protected Shape2D(ShapeType shapeType, double length, double width)
