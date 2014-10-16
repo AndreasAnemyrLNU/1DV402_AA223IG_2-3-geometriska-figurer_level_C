@@ -14,30 +14,43 @@ namespace _1DV402.S2.L3C
 
         private static Shape CreateShape(ShapeType shapeType)
         {
-            //Läsa in en figurs dim, skapa objekt och returnera ref:
 
-                         switch (shapeType)
-                         {
-                             case ShapeType.Rectangle:
-                                 return new Rectangle(31.1,17.8);
+            //Här skriver man en rubrik för att se en dummy på inmatningsvalen...
 
-                             case ShapeType.Circle:
-                                 return new Ellipse(29.6);
+            switch (shapeType)
+            {
+                case ShapeType.Rectangle:
+                Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+                Console.WriteLine(" ║             Rektangel             ║ ");
+                Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    break;
 
-                             case ShapeType.Ellipse:
-                                 return new Ellipse(29.6,29.6);
+            }
 
-                             case ShapeType.Cuboid:
-                                 return new Cuboid(12,41.4,50.6);
+            switch (shapeType)
+            {
+                case ShapeType.Rectangle:
+                    return new Rectangle(31.1, 17.8);
 
-                             case ShapeType.Cylinder:
-                                 return new Cylinder(96.9,5.4, 9.5);
+                case ShapeType.Circle:
+                    return new Ellipse(29.6);
 
-                             case ShapeType.Sphere:
-                                 return new Sphere(29.6);
-                             default:
-                                 throw new NotImplementedException();
-                         }
+                case ShapeType.Ellipse:
+                    return new Ellipse(29.6, 29.6);
+
+                case ShapeType.Cuboid:
+                    return new Cuboid(12, 41.4, 50.6);
+
+                case ShapeType.Cylinder:
+                    return new Cylinder(96.9, 5.4, 9.5);
+
+                case ShapeType.Sphere:
+                    return new Sphere(29.6);
+
+                default:
+                    return new Sphere(29.6); ;
+            }
+
         }
 
         private static Shape2D[] Randomize2DShapes()
@@ -61,8 +74,26 @@ namespace _1DV402.S2.L3C
         }
 
         private static void ViewMenu()
-        {
-            Console.WriteLine("Här ska en meny med val genereras. Metoden heter ViewMenu");
+        {        
+                Console.Clear();
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+                Console.WriteLine(" ║         Geometriska figurer       ║ ");
+                Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.WriteLine("{0}", Properties.Resources.aMenuCancel);
+                Console.WriteLine("{0}", Properties.Resources.aMenuRectangle);
+                Console.WriteLine("{0}", Properties.Resources.aMenuCirkel);
+                Console.WriteLine("{0}", Properties.Resources.aMenuEllipse);
+                Console.WriteLine("{0}", Properties.Resources.aMenuCuboid);
+                Console.WriteLine("{0}", Properties.Resources.aMenuCylinder);
+                Console.WriteLine("{0}", Properties.Resources.aMenuSphere);
+                Console.WriteLine("{0}", Properties.Resources.aRandomize2D);
+                Console.WriteLine("{0}", Properties.Resources.aRandomize3D);
+                Console.WriteLine("\n ═══════════════════════════════════════════\n");
+                Console.Write(" Ange menyval [0-8]: ");
+                Console.ResetColor();
         }
 
         private static void ViewMenuErrorMessage()
@@ -83,83 +114,52 @@ namespace _1DV402.S2.L3C
             }
         }
 
-
-
-
         static void Main(string[] args)
         {
 
+            Console.Title = "Geometriska figurer - nivå C";
 
-            ViewMenu();
+            int index;
+            ShapeType shapeType = ShapeType.Indefinite;
 
-            Shape ellipse, rectangle;
+            //Här läser man in valet för shapen man vill göra
+            do
+            {
+                ViewMenu();
+                // Läser in en sträng som försöker tolkas till ett heltal; validerar sedan att 
+                // det inmatade heltalet är i det slutna intervallet mellan 0 och 8. 
+                if (int.TryParse(Console.ReadLine(), out index) && index >= 0 && index <= 8)
+                {
+                    shapeType = (ShapeType)index;
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\n FEL! Ange ett nummer mellan 0 och 8.\n");
+                    Console.ResetColor();
+                }
+            } while ((index == 0));
 
-            ellipse = CreateShape(ShapeType.Ellipse);
-            rectangle = CreateShape(ShapeType.Rectangle);
+            Shape testarShape = CreateShape(shapeType);
+
+
+
+         //   Shape ellipse, rectangle;
+
+       //     ellipse = CreateShape(ShapeType.Ellipse);
+     //       rectangle = CreateShape(ShapeType.Rectangle);
 
     //        ViewShapeDetail(test);
 
-            Shape[] shapeArr = { ellipse, rectangle };
+      //      Shape[] shapeArr = { ellipse, rectangle };
 
-            ViewShapes(shapeArr);
-
-
-            
-            //Skicka med vilken typ av figur det är för att kunna göra en selektion
-            //i ReadDimensions. Tror jag kan använda mig av IsShape3D?
-
+    //        ViewShapes(shapeArr);
 
 
             Console.Read();
 
 
-
-
-
-
-
-
-            //bool exit = false;
-            //ShapeType type = ShapeType.Indefinite;
-
-            //do
-            //{
-            //    switch (GetMenuChoice())
-            //    {
-            //        case 0:
-            //            exit = true;
-            //            continue;
-
-            //        case 1:
-            //            type = ShapeType.Rectangle;
-            //            break;
-
-            //        case 2:
-            //            type = ShapeType.Circle;
-            //            break;
-
-            //        case 3:
-            //            type = ShapeType.Ellipse;
-            //            break;
-
-            //        case 4:
-            //            type = ShapeType.Cuboid;
-            //            break;
-
-            //        case 5:
-            //            type = ShapeType.Cylinder;
-            //            break;
-
-            //        case 6:
-            //            type = ShapeType.Sphere;
-            //            break;
-            //    }
-
-            //    Console.Clear();
-            //    INoise noise = CreateNoiseObject(type);
-            //    noise.MakeNoise();
-            //    ContinueOnKeyPressed();
-            //} while (!exit);
 
 
 
@@ -216,45 +216,8 @@ namespace _1DV402.S2.L3C
 //             }
 //         } 
 
-//         private static int GetMenuChoice() 
-//         { 
-//             int index; 
- 
-//             do 
-//             { 
-//                 Console.Clear(); 
-//                 Console.BackgroundColor = ConsoleColor.DarkCyan; 
-//                 Console.ForegroundColor = ConsoleColor.White; 
-//                 Console.WriteLine(" ╔═══════════════════════════════════╗ "); 
-//                 Console.WriteLine(" ║         Geometriska figurer       ║ "); 
-//                 Console.WriteLine(" ╚═══════════════════════════════════╝ "); 
-//                 Console.BackgroundColor = ConsoleColor.Black;  
-//                 Console.WriteLine(" 0. Avsluta.");  
-//                 Console.WriteLine(" 1. Rectangle."); 
-//                 Console.WriteLine(" 2. Circle."); 
-//                 Console.WriteLine(" 3. Ellipse.");
-//                 Console.WriteLine(" 4. Cuboid");
-//                 Console.WriteLine(" 5. Cylinder");
-//                 Console.WriteLine(" 6. Sphere");
-//                 Console.WriteLine(" 7. Slumpa 2D-figurer");
-//                 Console.WriteLine(" 8. Slumpa 3D-figurer");
-//                 Console.WriteLine("\n ═══════════════════════════════════════════\n"); 
-//                 Console.Write(" Ange menyval [0-8]: "); 
-//                 Console.ResetColor(); 
- 
-//                 // Läser in en sträng som försöker tolkas till ett heltal; validerar sedan att 
-//                 // det inmatade heltalet är i det slutna intervallet mellan 0 och 8. 
-//                 if (int.TryParse(Console.ReadLine(), out index) && index >= 0 && index <= 8) 
-//                 { 
-//                    return index; 
-//                 } 
-//                 Console.BackgroundColor = ConsoleColor.Red; 
-//                 Console.ForegroundColor = ConsoleColor.White; 
-//                 Console.WriteLine("\n FEL! Ange ett nummer mellan 0 och 8.\n"); 
-//                 ContinueOnKeyPressed(); 
-//                } while (true); 
 
-//         }      
+      
     } 
  } 
 
