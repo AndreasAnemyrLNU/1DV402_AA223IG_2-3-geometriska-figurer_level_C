@@ -92,11 +92,17 @@ namespace _1DV402.S2.L3C
 
             ViewMenu();
 
-            Shape test;
+            Shape ellipse, rectangle;
 
-            test = CreateShape(ShapeType.Ellipse);
+            ellipse = CreateShape(ShapeType.Ellipse);
+            rectangle = CreateShape(ShapeType.Rectangle);
 
-            ViewShapeDetail(test);
+    //        ViewShapeDetail(test);
+
+            Shape[] shapeArr = { ellipse, rectangle };
+
+            ViewShapes(shapeArr);
+
 
             
             //Skicka med vilken typ av figur det är för att kunna göra en selektion
