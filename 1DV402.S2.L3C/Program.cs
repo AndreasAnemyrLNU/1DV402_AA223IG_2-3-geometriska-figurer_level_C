@@ -12,52 +12,77 @@ namespace _1DV402.S2.L3C
     class Program
     {
 
-        private Shape CreateShape(ShapeType shapeType)
+        private static Shape CreateShape(ShapeType shapeType)
+        {
+            //Läsa in en figurs dim, skapa objekt och returnera ref:
+
+                         switch (shapeType)
+                         {
+                             case ShapeType.Rectangle:
+                                 return new Rectangle(31.1,17.8);
+
+                             case ShapeType.Circle:
+                                 return new Ellipse(29.6);
+
+                             case ShapeType.Ellipse:
+                                 return new Ellipse(29.6,29.6);
+
+                             case ShapeType.Cuboid:
+                                 return new Cuboid(12,41.4,50.6);
+
+                             case ShapeType.Cylinder:
+                                 return new Cylinder(96.9,5.4, 9.5);
+
+                             case ShapeType.Sphere:
+                                 return new Sphere(29.6);
+                             default:
+                                 throw new NotImplementedException();
+                         }
+        }
+
+        private static Shape2D[] Randomize2DShapes()
         {
             throw new NotImplementedException();
         }
 
-        private Shape2D[] Randomize2DShapes()
+        private static Shape3D[] Randomize3DShape()
         {
             throw new NotImplementedException();
         }
 
-        private Shape3D[] Randomize3DShape()
+        private static double[] ReadDimensions(ShapeType shapetype)
         {
             throw new NotImplementedException();
         }
 
-        private double ReadDimensions(ShapeType shapetype)
+        private static double[] ReadDoublesGreaterThanZero(string prompt, int numberOfvalues = 1)
         {
             throw new NotImplementedException();
         }
 
-        private double[] ReadDoublesGreaterThanZero(string prompt, int numberOfvalues = 1)
+        private static void ViewMenu()
+        {
+            Console.WriteLine("Här ska en meny med val genereras. Metoden heter ViewMenu");
+        }
+
+        private static void ViewMenuErrorMessage()
         {
             throw new NotImplementedException();
         }
 
-        private void ViewMenu()
+        private static void ViewShapeDetail(Shape shape)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(shape.ToString());
         }
 
-        private void ViewMenuErrorMessage()
+        private static void ViewShapes(Shape[] shapes) 
         {
-            throw new NotImplementedException();
+            foreach(Shape shape in shapes)
+            {
+            Console.WriteLine(shape.ToString("R"));
+            }
         }
 
-        private void ViewShapeDetails(Shape shape)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ViewShapes(Shape[] shapes) 
-        {
-            throw new NotImplementedException();
-        }
-
-        //
 
 
 
@@ -65,14 +90,19 @@ namespace _1DV402.S2.L3C
         {
 
 
+            ViewMenu();
+
+            Shape test;
+
+            test = CreateShape(ShapeType.Ellipse);
+
+            ViewShapeDetail(test);
+
+            
+            //Skicka med vilken typ av figur det är för att kunna göra en selektion
+            //i ReadDimensions. Tror jag kan använda mig av IsShape3D?
 
 
-
-
-
-            Sphere test = new Sphere(29.6);
-
-            Console.WriteLine(test);
 
             Console.Read();
 

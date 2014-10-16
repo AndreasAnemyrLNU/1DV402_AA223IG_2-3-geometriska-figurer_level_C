@@ -11,7 +11,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="_1DV402.S2.L3C.Shape2D">
-    <Position X="1.25" Y="3.25" Width="4.25" />
+    <Position X="1" Y="4" Width="4.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAQEAAAAAEBAABAAAAAABAAAAQAAAAA=</HashCode>
       <FileName>Shape2D.cs</FileName>
