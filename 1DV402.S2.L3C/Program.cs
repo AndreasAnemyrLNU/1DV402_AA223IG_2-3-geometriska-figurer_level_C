@@ -16,6 +16,8 @@ namespace _1DV402.S2.L3C
         {
 
             //Här skriver man en rubrik för att se en dummy på inmatningsvalen...
+            //Ska försöka läsa in värde med utgångspunkt från vilken shapetype det är frågan om!
+            ReadDimensions(shapeType);
 
             switch (shapeType)
             {
@@ -65,12 +67,64 @@ namespace _1DV402.S2.L3C
 
         private static double[] ReadDimensions(ShapeType shapetype)
         {
-            throw new NotImplementedException();
+
+            double[] doubles = new double[3];
+
+            switch (shapetype)
+            {
+
+                case ShapeType.Circle:
+                    doubles = ReadDoublesGreaterThanZero("Cirkel", 1);
+                    break;
+
+                case ShapeType.Cuboid:
+                    doubles = ReadDoublesGreaterThanZero("Cuboid", 3);
+                    break;
+
+                case ShapeType.Cylinder:
+                    doubles = ReadDoublesGreaterThanZero("Cylinder", 3);
+                    break;
+
+                case ShapeType.Ellipse:
+                    doubles = ReadDoublesGreaterThanZero("Ellipse", 2);
+                    break;
+
+                case ShapeType.Rectangle:
+                    doubles = ReadDoublesGreaterThanZero("Rektangel", 2);
+                    break;
+
+                case ShapeType.Sphere:
+                    doubles = ReadDoublesGreaterThanZero("Sfär", 3);
+                    break;
+            }
+            return doubles;
         }
 
         private static double[] ReadDoublesGreaterThanZero(string prompt, int numberOfvalues = 1)
         {
-            throw new NotImplementedException();
+            if (numberOfvalues == 2)
+            {
+                double[] doubles = new double[numberOfvalues];
+                Console.WriteLine("{0}", prompt);
+                //Nånstans måste jag läsa in värden!
+                Console.ReadLine();
+                //Här ska jag kunna returnera en array med två doubles.....
+                return doubles;
+            }
+            else if (numberOfvalues == 3)
+            {
+                double[] doubles = new double[numberOfvalues];
+                Console.WriteLine("{0}", prompt);
+                //Nånstans måste jag läsa in värden!
+                Console.ReadLine();
+                //Här ska jag kunna returnera en array med två doubles.....
+                return doubles;
+            }
+            else
+            {
+                throw new Exception();
+            }
+
         }
 
         private static void ViewMenu()
@@ -139,9 +193,16 @@ namespace _1DV402.S2.L3C
                     Console.WriteLine("\n FEL! Ange ett nummer mellan 0 och 8.\n");
                     Console.ResetColor();
                 }
+
+
             } while ((index == 0));
 
+
             Shape testarShape = CreateShape(shapeType);
+
+            ViewShapeDetail(testarShape);
+
+
 
 
 
