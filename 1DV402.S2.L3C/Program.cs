@@ -11,14 +11,60 @@ namespace _1DV402.S2.L3C
 
     class Program
     {
+
+        private Shape CreateShape(ShapeType shapeType)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Shape2D[] Randomize2DShapes()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Shape3D[] Randomize3DShape()
+        {
+            throw new NotImplementedException();
+        }
+
+        private double ReadDimensions(ShapeType shapetype)
+        {
+            throw new NotImplementedException();
+        }
+
+        private double[] ReadDoublesGreaterThanZero(string prompt, int numberOfvalues = 1)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ViewMenu()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ViewMenuErrorMessage()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ViewShapeDetails(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ViewShapes(Shape[] shapes) 
+        {
+            throw new NotImplementedException();
+        }
+
+        //
+
+
+
         static void Main(string[] args)
         {
 
 
-            private Shape CreateShape(ShapeType shapeType)
-            {
-                throw new NotImplementedException();
-            }
 
 
 
