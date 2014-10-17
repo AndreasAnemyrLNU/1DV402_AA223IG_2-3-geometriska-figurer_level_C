@@ -149,5 +149,14 @@ namespace _1DV402.S2.L3C.Properties {
                 return ResourceManager.GetString("aRandomize3D", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;=====================================\n&quot;.
+        /// </summary>
+        internal static string bHeadLine37 {
+            get {
+                return ResourceManager.GetString("bHeadLine37", resourceCulture);
+            }
+        }
     }
 }

@@ -147,4 +147,7 @@
   <data name="aRandomize3D" xml:space="preserve">
     <value>8. Slumpa 3d-figurer</value>
   </data>
+  <data name="bHeadLine37" xml:space="preserve">
+    <value>"=====================================\n"</value>
+  </data>
 </root>

@@ -18,28 +18,39 @@ namespace _1DV402.S2.L3C
             switch (shapeType)
             {
                 case ShapeType.Circle:
+                    formatHead();
                     Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
-
+                    Console.ResetColor();
                     break;
 
                 case ShapeType.Cuboid:
+                    formatHead();
                     Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    Console.ResetColor();
                     break;
 
                 case ShapeType.Cylinder:
+                    formatHead();
                     Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    Console.ResetColor();
                     break;
 
                 case ShapeType.Ellipse:
+                    formatHead();
                     Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    Console.ResetColor();
                     break;
 
                 case ShapeType.Rectangle:
+                    formatHead();
                     Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    Console.ResetColor();
                     break;
 
                 case ShapeType.Sphere:
+                    formatHead();
                     Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    Console.ResetColor();
                     break;
             }
        
@@ -372,7 +383,14 @@ namespace _1DV402.S2.L3C
             Console.ReadKey(true);
             Console.Clear();
             Console.CursorVisible = true;
-        } 
+        }
+
+        private static void formatHead()
+        {
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
 
      
     } 
