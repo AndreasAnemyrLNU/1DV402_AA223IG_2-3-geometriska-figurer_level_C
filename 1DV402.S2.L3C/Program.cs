@@ -18,39 +18,28 @@ namespace _1DV402.S2.L3C
             switch (shapeType)
             {
                 case ShapeType.Circle:
-                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-                    Console.WriteLine(" ║              Cirkel               ║ ");
-                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+
                     break;
 
                 case ShapeType.Cuboid:
-                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-                    Console.WriteLine(" ║             Rätblock              ║ ");
-                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
                     break;
 
                 case ShapeType.Cylinder:
-                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-                    Console.WriteLine(" ║              Cylinder             ║ ");
-                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
                     break;
 
                 case ShapeType.Ellipse:
-                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-                    Console.WriteLine(" ║              Ellipse              ║ ");
-                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
                     break;
 
                 case ShapeType.Rectangle:
-                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-                    Console.WriteLine(" ║             Rektangel             ║ ");
-                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
                     break;
 
                 case ShapeType.Sphere:
-                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-                    Console.WriteLine(" ║                Sfär               ║ ");
-                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
                     break;
             }
        
@@ -276,9 +265,9 @@ namespace _1DV402.S2.L3C
             if (shapes[0].IsShape3d == false)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("---------------------------------------------------------------------");
-                Console.WriteLine("Figur      Längd Bredd  Höjd   Mantelarea  Begränsn.area        Volym");
-                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine("------------------------------------");
+                Console.WriteLine("Figur      Längd Bredd Omkrets  Area");
+                Console.WriteLine("------------------------------------");
                 Console.ResetColor();
             }
 
@@ -355,7 +344,7 @@ namespace _1DV402.S2.L3C
 
                 case 8:
                     Shape[] Shape3ds = Randomize3DShapes();
-//                    Array.Sort(Shape3ds);
+                    Array.Sort(Shape3ds);
                     ViewShapes(Shape3ds);
                     break;
             }

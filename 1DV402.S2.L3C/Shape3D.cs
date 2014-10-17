@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _1DV402.S2.L3C
 {
-    public abstract class Shape3D : Shape
+    public abstract class Shape3D : Shape, IComparable
     {
         protected Shape2D _baseShape;
 

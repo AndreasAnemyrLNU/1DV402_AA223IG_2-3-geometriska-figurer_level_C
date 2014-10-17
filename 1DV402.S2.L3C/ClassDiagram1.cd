@@ -11,7 +11,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="_1DV402.S2.L3C.Shape2D">
-    <Position X="1" Y="4" Width="4.25" />
+    <Position X="0.75" Y="4.75" Width="4.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAQEAAAAAEBAABAAAAAABAAAAQAAAAA=</HashCode>
       <FileName>Shape2D.cs</FileName>
@@ -24,16 +24,17 @@
       <HashCode>AAAAIAAABACAAAQEAAAAAAAAAAAAIAAIAAIAAAAAAAA=</HashCode>
       <FileName>Shape3D.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="_1DV402.S2.L3C.Rectangle">
-    <Position X="1.25" Y="8.25" Width="3" />
+    <Position X="0.5" Y="9" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>Rectangle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_1DV402.S2.L3C.Ellipse">
-    <Position X="5" Y="8" Width="3" />
+    <Position X="4.25" Y="9" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>Ellipse.cs</FileName>
@@ -61,10 +62,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="_1DV402.S2.L3C.Program">
-    <Position X="0.5" Y="0.5" Width="5.25" />
+    <Position X="0.75" Y="0.5" Width="5.25" />
     <TypeIdentifier>
-      <HashCode>AAAEAQABAAAABEAAAAgAgAAAAAAAAAAAAAACRAAAAAA=</HashCode>
+      <HashCode>AAAGAIADAAAAREAAAAgAgAAAAEAAAAAAAAACBAAABAA=</HashCode>
       <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_1DV402.S2.L3C.Extensions">
+    <Position X="5.5" Y="6.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
