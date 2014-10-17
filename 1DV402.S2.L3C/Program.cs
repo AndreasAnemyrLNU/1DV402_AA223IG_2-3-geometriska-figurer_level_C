@@ -6,51 +6,73 @@ using System.Threading.Tasks;
 
 namespace _1DV402.S2.L3C
 {
-
-
-
     class Program
     {
-
         private static Shape CreateShape(ShapeType shapeType)
         {
-
-            //Här skriver man en rubrik för att se en dummy på inmatningsvalen...
-            //Ska försöka läsa in värde med utgångspunkt från vilken shapetype det är frågan om!
-            ReadDimensions(shapeType);
-
             switch (shapeType)
             {
-                case ShapeType.Rectangle:
-                Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-                Console.WriteLine(" ║             Rektangel             ║ ");
-                Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                case ShapeType.Circle:
+                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+                    Console.WriteLine(" ║              Cirkel               ║ ");
+                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
                     break;
 
+                case ShapeType.Cuboid:
+                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+                    Console.WriteLine(" ║             Rätblock              ║ ");
+                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    break;
+
+                case ShapeType.Cylinder:
+                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+                    Console.WriteLine(" ║              Cylinder             ║ ");
+                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    break;
+
+                case ShapeType.Ellipse:
+                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+                    Console.WriteLine(" ║              Ellipse              ║ ");
+                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    break;
+
+                case ShapeType.Rectangle:
+                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+                    Console.WriteLine(" ║             Rektangel             ║ ");
+                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    break;
+
+                case ShapeType.Sphere:
+                    Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+                    Console.WriteLine(" ║                Sfär               ║ ");
+                    Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                    break;
             }
+       
+            double[] dimensions = ReadDimensions(shapeType);
 
             switch (shapeType)
             {
                 case ShapeType.Rectangle:
-                    return new Rectangle(31.1, 17.8);
+                    return new Rectangle(dimensions[0],dimensions[1]);
 
                 case ShapeType.Circle:
-                    return new Ellipse(29.6);
+                    return new Ellipse(dimensions[0]);
 
                 case ShapeType.Ellipse:
-                    return new Ellipse(29.6, 29.6);
+                    return new Ellipse(dimensions[0],dimensions[1]);
 
                 case ShapeType.Cuboid:
-                    return new Cuboid(12, 41.4, 50.6);
+                    return new Cuboid(dimensions[0],dimensions[1],dimensions[2]);
 
                 case ShapeType.Cylinder:
-                    return new Cylinder(96.9, 5.4, 9.5);
+                    return new Cylinder(dimensions[0],dimensions[1],dimensions[2]);
 
                 case ShapeType.Sphere:
-                    return new Sphere(29.6);
+                    return new Sphere(dimensions[0]);
 
                 default:
-                    return new Sphere(29.6); ;
+                    return null;
             }
 
         }
@@ -68,33 +90,36 @@ namespace _1DV402.S2.L3C
         private static double[] ReadDimensions(ShapeType shapetype)
         {
 
-            double[] doubles = new double[3];
+            double[] doubles;
 
             switch (shapetype)
             {
 
                 case ShapeType.Circle:
-                    doubles = ReadDoublesGreaterThanZero("Cirkel", 1);
+                    doubles = ReadDoublesGreaterThanZero("Ange figurens diameter:", 1);
                     break;
 
                 case ShapeType.Cuboid:
-                    doubles = ReadDoublesGreaterThanZero("Cuboid", 3);
+                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd, bredd och höjd:", 3);
                     break;
 
                 case ShapeType.Cylinder:
-                    doubles = ReadDoublesGreaterThanZero("Cylinder", 3);
+                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd, bredd och höjd:", 3);
                     break;
 
                 case ShapeType.Ellipse:
-                    doubles = ReadDoublesGreaterThanZero("Ellipse", 2);
+                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd och bredd:", 2);
                     break;
 
                 case ShapeType.Rectangle:
-                    doubles = ReadDoublesGreaterThanZero("Rektangel", 2);
+                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd och bredd:", 2);
                     break;
 
                 case ShapeType.Sphere:
-                    doubles = ReadDoublesGreaterThanZero("Sfär", 3);
+                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd, bredd och djup:", 3);
+                    break;
+                default:
+                    doubles = null;
                     break;
             }
             return doubles;
@@ -102,29 +127,37 @@ namespace _1DV402.S2.L3C
 
         private static double[] ReadDoublesGreaterThanZero(string prompt, int numberOfvalues = 1)
         {
-            if (numberOfvalues == 2)
+            Console.Write("{0}", prompt);
+
+            string dimensionsString = Console.ReadLine();
+
+            string[] dimensionsArr = dimensionsString.Split();
+
+            //Kontroller så att inget av värden är 0 eller lägra för då ska jag kaste ett fel
+
+
+            for (int i = 0; i < dimensionsArr.Length; i++ )
             {
-                double[] doubles = new double[numberOfvalues];
-                Console.WriteLine("{0}", prompt);
-                //Nånstans måste jag läsa in värden!
-                Console.ReadLine();
-                //Här ska jag kunna returnera en array med två doubles.....
-                return doubles;
-            }
-            else if (numberOfvalues == 3)
-            {
-                double[] doubles = new double[numberOfvalues];
-                Console.WriteLine("{0}", prompt);
-                //Nånstans måste jag läsa in värden!
-                Console.ReadLine();
-                //Här ska jag kunna returnera en array med två doubles.....
-                return doubles;
-            }
-            else
-            {
-                throw new Exception();
+                if (double.Parse(dimensionsArr[i]) <= 0d)
+                {
+                    Console.WriteLine("Fel! Ett fel inträffade då figurens dimensioner tolkades");
+                }
             }
 
+                switch (numberOfvalues)
+                {
+                    case 1:
+                        return new double[1] { double.Parse(dimensionsArr[0]) };
+
+                    case 2:
+                        return new double[2] { double.Parse(dimensionsArr[0]), double.Parse(dimensionsArr[1]) };
+
+                    case 3:
+                        return new double[3] { double.Parse(dimensionsArr[0]) , double.Parse(dimensionsArr[1]) , double.Parse(dimensionsArr[2]) };
+                   
+                    default:
+                        return null;
+                }       
         }
 
         private static void ViewMenu()
