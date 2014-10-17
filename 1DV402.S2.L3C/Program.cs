@@ -77,27 +77,40 @@ namespace _1DV402.S2.L3C
 
         }
 
-        //private static Shape2D[] Randomize2DShapes()
-                    private static void Randomize2DShapes()
+        private static Shape2D[] Randomize2DShapes()
+                    //private static void Randomize2DShapes()
         {
-            Random rnd = new Random();
+            Random rndObjects = new Random(seed);
 
-            int nrOfObjectsToRandomize = rnd.Next(5, 20);
+            int nrOfObjectsToRandomize = rndObjects.Next(5, 20);
 
             //Skapar en arry med rätt antal objekt
             Shape2D[] Shape2Ds = new Shape2D[nrOfObjectsToRandomize];
 
             for (int i = 0; i < nrOfObjectsToRandomize; i++)
             {
+                //Slumpar ett ta från O till 2 typomvandlas till ett ShapeType enum
+                ShapeType shapeType = (ShapeType)rndObjects.Next(1,4);
+           
+                switch (shapeType)
+                {
+                case ShapeType.Rectangle:
+                     Shape2Ds[i] = new Rectangle(RndDoubleGen(), RndDoubleGen());
+                     continue;
 
-                //Här ska den slumpa ett 2D object!!!! konverter int to enum
-                Shape2Ds[i] = new Rectangle(7, 7);  
+                case ShapeType.Circle:
+                    Shape2Ds[i] = new Ellipse(RndDoubleGen());
+                    continue;
+
+                case ShapeType.Ellipse:
+                    Shape2Ds[i] = new Ellipse(RndDoubleGen(),RndDoubleGen());
+                    continue;
+                }
             }
-
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine(nrOfObjectsToRandomize);
-
-
+            //Returnerner härmed en randomiserad shape2D array
+            //Eventuellt skulle man kunna ta bort seed++ då den eventuellt inte behövs i denna metoden           
+            seed++;
+            return Shape2Ds;
         }
 
         private static Shape3D[] Randomize3DShape()
@@ -256,12 +269,28 @@ namespace _1DV402.S2.L3C
             //ViewShapeDetail(testarShape);
 
 
-            Randomize2DShapes();
+            
+            Shape[] Shape2ds = Randomize2DShapes();
+
+            ViewShapes(Shape2ds);
+
 
 
             Console.Read();
         }
 
+        public static double RndDoubleGen()
+        {
+            Random rnd = new Random(seed);
+            int first = rnd.Next(0, 100);
+            double second =rnd.NextDouble();
+            double randomizedDouble = first + second;
+            seed++;
+            return randomizedDouble;
+        }
+
+        //För varje gång ett rnd objekt rulla ökar slumtalsfröet med ETT
+        private static int seed;
  
 //         private static void ContinueOnKeyPressed() 
 //         { 
