@@ -19,7 +19,7 @@ namespace _1DV402.S2.L3C
         {
             get
             {
-                if(ShapeType != ShapeType.Circle || ShapeType != ShapeType.Rectangle)
+                if(ShapeType == ShapeType.Circle || ShapeType == ShapeType.Rectangle)
                 {
                     return false;
                 }

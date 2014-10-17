@@ -87,7 +87,7 @@ namespace _1DV402.S2.L3C
         {
             Random rndObjects = new Random(seed);
 
-            int nrOfObjectsToRandomize = rndObjects.Next(5, 20);
+            int nrOfObjectsToRandomize = rndObjects.Next(5, 21);
 
             //Skapar en arry med rätt antal objekt
             Shape2D[] Shape2Ds = new Shape2D[nrOfObjectsToRandomize];
@@ -122,7 +122,7 @@ namespace _1DV402.S2.L3C
         {
             Random rndObjects = new Random(seed);
 
-            int nrOfObjectsToRandomize = rndObjects.Next(5, 20);
+            int nrOfObjectsToRandomize = rndObjects.Next(5, 21);
 
             //Skapar en arry med rätt antal objekt
             Shape3D[] Shape3Ds = new Shape3D[nrOfObjectsToRandomize];
@@ -265,6 +265,23 @@ namespace _1DV402.S2.L3C
 
         private static void ViewShapes(Shape[] shapes) 
         {
+            if (shapes[0].IsShape3d == true)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine("Figur      Längd Bredd  Höjd   Mantelarea  Begränsn.area        Volym");
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.ResetColor();
+            }
+            if (shapes[0].IsShape3d == false)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine("Figur      Längd Bredd  Höjd   Mantelarea  Begränsn.area        Volym");
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.ResetColor();
+            }
+
             foreach(Shape shape in shapes)
             {
             Console.WriteLine(shape.ToString("R"));
@@ -338,7 +355,7 @@ namespace _1DV402.S2.L3C
 
                 case 8:
                     Shape[] Shape3ds = Randomize3DShapes();
-                    Array.Sort(Shape3ds);
+//                    Array.Sort(Shape3ds);
                     ViewShapes(Shape3ds);
                     break;
             }
