@@ -204,7 +204,7 @@ namespace _1DV402.S2.L3C
 
             for (int i = 0; i < dimensionsArr.Length; i++ )
             {
-                if (double.Parse(dimensionsArr[i]) <= 0d)
+                if (double.Parse(dimensionsArr[i]) <= 0)
                 {
                     Console.WriteLine("Fel! Ett fel inträffade då figurens dimensioner tolkades");
                 }
@@ -294,9 +294,6 @@ namespace _1DV402.S2.L3C
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\n FEL! Ange ett nummer mellan 0 och 8.\n");
                     Console.ResetColor();
-
-                    ContinueOnKeyPressed();
-
                 }
             } while (index == 0);
 
@@ -305,41 +302,47 @@ namespace _1DV402.S2.L3C
             {
                 case 1:
                     shape = CreateShape(ShapeType.Rectangle);
+                    ViewShapeDetail(shape);
                     break;
 
                 case 2:
                      shape = CreateShape(ShapeType.Circle);
+                     ViewShapeDetail(shape);
                     break;                   
 
                 case 3:
                     shape = CreateShape(ShapeType.Ellipse);
+                    ViewShapeDetail(shape);
                     break;
 
                 case 4:
                     shape = CreateShape(ShapeType.Cuboid);
+                    ViewShapeDetail(shape);
                     break;
 
                 case 5:
                     shape = CreateShape(ShapeType.Cylinder);
+                    ViewShapeDetail(shape);
                     break;
 
                 case 6:
                     shape = CreateShape(ShapeType.Sphere);
+                    ViewShapeDetail(shape);
                     break;
 
                 case 7:
                     Shape[] Shape2ds = Randomize2DShapes();
+                    Array.Sort(Shape2ds);
                     ViewShapes(Shape2ds);
                     break;
 
                 case 8:
                     Shape[] Shape3ds = Randomize3DShapes();
+                    Array.Sort(Shape3ds);
                     ViewShapes(Shape3ds);
                     break;
             }
 
-            //Denna ska gå om val 1-6 är gjorda.... Då innehåller referensen ett objekt.....
-            ViewShapeDetail(shape);
             Console.Read();
         }
 

@@ -76,9 +76,7 @@ namespace _1DV402.S2.L3C
             }
             else if (format == "R")
             {
-                return string.Format("{0,-10}{1,6:F1}{2,6:F1}{3,6:F1}{4,13:F1}{5,13:F1},{6,13F1}", ShapeType, _baseShape.Length, _baseShape.Width, Height, MantelArea, TotalSurfaceArea, Volume);
-
-//                return string.Format("{0,-10}{1,6:F1}{2,6:F1}{3,6:F1}{4,13:F1}{5,13:F1},{6,13F1}", ShapeType, _baseShape.Length, _baseShape.Width, Height, MantelArea, TotalSurfaceArea, Volume );
+              return string.Format("{0,-10}{1,6:F1}{2,6:F1}{3,6:F1}{4,13:F1}{5,13:F1}{6,15:F1}", ShapeType, _baseShape.Length, _baseShape.Width, Height, MantelArea, TotalSurfaceArea, Volume);
             }
             else
             {
