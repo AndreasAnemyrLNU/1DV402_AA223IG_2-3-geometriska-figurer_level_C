@@ -40,9 +40,9 @@ namespace _1DV402.S2.L3C
             {
                 string str = other;
 
-                int space = (((other.Length - s.Length) - 2) / 2);
+                int space = ((other.Length - s.Length) / 2);
 
-                str += "=";
+                str += "\n=";
                     for (int i = 0; i < space; i++)
                     {
                         str += (" ");
@@ -54,6 +54,7 @@ namespace _1DV402.S2.L3C
                     }
                 str += "=\n";
                 str += other;
+                str += "\n";
                 return str;
             }
             //Centretar en rubrik med ojämn textsträng other
@@ -61,20 +62,21 @@ namespace _1DV402.S2.L3C
             {
                 string str = other;
 
-                int space = (((other.Length - s.Length) - 2) / 2);
+                int space = ((other.Length - s.Length) / 2);
 
-                str += "=";
+                str += "\n=";
                 for (int i = 0; i < space; i++)
                 {
                     str += (" ");
                 }
                 str += s;
-                for (int i = 0; i < space - 1; i++)
+                for (int i = 0; i < space - 2; i++)
                 {
                     str += (" ");
                 }
-                str += " =\n";
+                str += "=\n";
                 str += other;
+                str += "\n";
                 return str;
             }
         }

@@ -151,11 +151,29 @@ namespace _1DV402.S2.L3C.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;=====================================\n&quot;.
+        ///   Looks up a localized string similar to =============================================.
         /// </summary>
         internal static string bHeadLine37 {
             get {
                 return ResourceManager.GetString("bHeadLine37", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Figur      Längd Bredd Omkrets  Area.
+        /// </summary>
+        internal static string bHeadViewShapes2DHeading {
+            get {
+                return ResourceManager.GetString("bHeadViewShapes2DHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Figur      Längd Bredd  Höjd   Mantelarea  Begränsn.area        Volym.
+        /// </summary>
+        internal static string bHeadViewShapes3DHeading {
+            get {
+                return ResourceManager.GetString("bHeadViewShapes3DHeading", resourceCulture);
             }
         }
     }

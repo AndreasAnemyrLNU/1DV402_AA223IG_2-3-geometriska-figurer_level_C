@@ -18,38 +18,38 @@ namespace _1DV402.S2.L3C
             switch (shapeType)
             {
                 case ShapeType.Circle:
-                    formatHead();
-                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    FormatHead();
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), Properties.Resources.bHeadLine37));
                     Console.ResetColor();
                     break;
 
                 case ShapeType.Cuboid:
-                    formatHead();
-                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    FormatHead();
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), Properties.Resources.bHeadLine37));
                     Console.ResetColor();
                     break;
 
                 case ShapeType.Cylinder:
-                    formatHead();
-                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    FormatHead();
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), Properties.Resources.bHeadLine37));
                     Console.ResetColor();
                     break;
 
                 case ShapeType.Ellipse:
-                    formatHead();
-                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    FormatHead();
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), Properties.Resources.bHeadLine37));
                     Console.ResetColor();
                     break;
 
                 case ShapeType.Rectangle:
-                    formatHead();
-                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    FormatHead();
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), Properties.Resources.bHeadLine37));
                     Console.ResetColor();
                     break;
 
                 case ShapeType.Sphere:
-                    formatHead();
-                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), "=====================================\n"));
+                    FormatHead();
+                    Console.WriteLine(Extensions.CenterAlignString(Extensions.AsText(shapeType), Properties.Resources.bHeadLine37));
                     Console.ResetColor();
                     break;
             }
@@ -231,9 +231,7 @@ namespace _1DV402.S2.L3C
                 Console.Clear();
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-                Console.WriteLine(" ║         Geometriska figurer       ║ ");
-                Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+                Console.WriteLine(Extensions.CenterAlignString("Geometriska figurer", Properties.Resources.bHeadLine37));
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.WriteLine("{0}", Properties.Resources.aMenuCancel);
                 Console.WriteLine("{0}", Properties.Resources.aMenuRectangle);
@@ -244,7 +242,7 @@ namespace _1DV402.S2.L3C
                 Console.WriteLine("{0}", Properties.Resources.aMenuSphere);
                 Console.WriteLine("{0}", Properties.Resources.aRandomize2D);
                 Console.WriteLine("{0}", Properties.Resources.aRandomize3D);
-                Console.WriteLine("\n ═══════════════════════════════════════════\n");
+                Console.WriteLine("\n{0}\n", Properties.Resources.bHeadLine37);
                 Console.Write(" Ange menyval [0-8]: ");
                 Console.ResetColor();
         }
@@ -256,9 +254,9 @@ namespace _1DV402.S2.L3C
 
         private static void ViewShapeDetail(Shape shape)
         {
-            Console.WriteLine(" ╔═══════════════════════════════════╗ ");
-            Console.WriteLine(" ║              Detaljer             ║ ");
-            Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+            FormatHead();
+            Console.WriteLine(Extensions.CenterAlignString("Detaljer", Properties.Resources.bHeadLine37));
+            Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(shape.ToString());
         }
@@ -267,23 +265,27 @@ namespace _1DV402.S2.L3C
         {
             if (shapes[0].IsShape3d == true)
             {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("---------------------------------------------------------------------");
-                Console.WriteLine("Figur      Längd Bredd  Höjd   Mantelarea  Begränsn.area        Volym");
-                Console.WriteLine("---------------------------------------------------------------------");
+                Console.Clear();
+                FormatHead();
+                Console.WriteLine("=====================================================================");
+                Console.WriteLine(Properties.Resources.bHeadViewShapes3DHeading);
+                Console.WriteLine("=====================================================================");
+
                 Console.ResetColor();
             }
             if (shapes[0].IsShape3d == false)
             {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("------------------------------------");
-                Console.WriteLine("Figur      Längd Bredd Omkrets  Area");
-                Console.WriteLine("------------------------------------");
+                Console.Clear();
+                FormatHead();
+                Console.WriteLine("====================================");
+                Console.WriteLine(Properties.Resources.bHeadViewShapes2DHeading);
+                Console.WriteLine("====================================");
                 Console.ResetColor();
             }
 
             foreach(Shape shape in shapes)
             {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(shape.ToString("R"));
             }
         }
@@ -385,9 +387,8 @@ namespace _1DV402.S2.L3C
             Console.CursorVisible = true;
         }
 
-        private static void formatHead()
+        private static void FormatHead()
         {
-            Console.Clear();
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.ForegroundColor = ConsoleColor.White;
         }

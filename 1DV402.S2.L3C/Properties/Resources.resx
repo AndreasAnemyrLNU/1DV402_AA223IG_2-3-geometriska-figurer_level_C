@@ -148,6 +148,12 @@
     <value>8. Slumpa 3d-figurer</value>
   </data>
   <data name="bHeadLine37" xml:space="preserve">
-    <value>"=====================================\n"</value>
+    <value>=============================================</value>
+  </data>
+  <data name="bHeadViewShapes2DHeading" xml:space="preserve">
+    <value>Figur      Längd Bredd Omkrets  Area</value>
+  </data>
+  <data name="bHeadViewShapes3DHeading" xml:space="preserve">
+    <value>Figur      Längd Bredd  Höjd   Mantelarea  Begränsn.area        Volym</value>
   </data>
 </root>
