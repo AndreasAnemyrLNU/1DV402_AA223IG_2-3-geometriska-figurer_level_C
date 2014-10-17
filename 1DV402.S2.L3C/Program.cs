@@ -77,9 +77,27 @@ namespace _1DV402.S2.L3C
 
         }
 
-        private static Shape2D[] Randomize2DShapes()
+        //private static Shape2D[] Randomize2DShapes()
+                    private static void Randomize2DShapes()
         {
-            throw new NotImplementedException();
+            Random rnd = new Random();
+
+            int nrOfObjectsToRandomize = rnd.Next(5, 20);
+
+            //Skapar en arry med rätt antal objekt
+            Shape2D[] Shape2Ds = new Shape2D[nrOfObjectsToRandomize];
+
+            for (int i = 0; i < nrOfObjectsToRandomize; i++)
+            {
+
+                //Här ska den slumpa ett 2D object!!!! konverter int to enum
+                Shape2Ds[i] = new Rectangle(7, 7);  
+            }
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine(nrOfObjectsToRandomize);
+
+
         }
 
         private static Shape3D[] Randomize3DShape()
@@ -190,6 +208,10 @@ namespace _1DV402.S2.L3C
 
         private static void ViewShapeDetail(Shape shape)
         {
+            Console.WriteLine(" ╔═══════════════════════════════════╗ ");
+            Console.WriteLine(" ║              Detaljer             ║ ");
+            Console.WriteLine(" ╚═══════════════════════════════════╝ ");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(shape.ToString());
         }
 
@@ -226,37 +248,18 @@ namespace _1DV402.S2.L3C
                     Console.WriteLine("\n FEL! Ange ett nummer mellan 0 och 8.\n");
                     Console.ResetColor();
                 }
-
-
             } while ((index == 0));
 
 
-            Shape testarShape = CreateShape(shapeType);
-
-            ViewShapeDetail(testarShape);
-
-
+            //Testar här att läsa in vald shap shapetype enum från menyn
+            //Shape testarShape = CreateShape(shapeType);
+            //ViewShapeDetail(testarShape);
 
 
-
-         //   Shape ellipse, rectangle;
-
-       //     ellipse = CreateShape(ShapeType.Ellipse);
-     //       rectangle = CreateShape(ShapeType.Rectangle);
-
-    //        ViewShapeDetail(test);
-
-      //      Shape[] shapeArr = { ellipse, rectangle };
-
-    //        ViewShapes(shapeArr);
+            Randomize2DShapes();
 
 
             Console.Read();
-
-
-
-
-
         }
 
  
@@ -271,47 +274,8 @@ namespace _1DV402.S2.L3C
 //             Console.Clear(); 
 //             Console.CursorVisible = true; 
 //         } 
-//         /// <summary> 
-//         /// Skapar ett objekt som implementerar interfacet INoise och som 
-//         /// därmed kan för lite oljud. 
-//         /// </summary> 
-//         /// <param name="type">Värdet som bestämmer vilken type av objekt som ska skapas.</param> 
-//         /// <returns>En referens till det nyligen skapade objektet.</returns> 
-//         /// 
-//        //Undrar om det går bra med shape typ här?
-//         private static shape CreateShape(ShapeType type)
-//         {
-//             switch (type)
-//             {
-//                 case ShapeType.Rectangle:
-//                     return new Rectangle();
 
-//                 case ShapeType.Circle:
-//                     return new Circle();
-
-//                 case ShapeType.Ellipse:
-//                     return new Ellipse();
-
-//                 case ShapeType.Cuboid:
-//                     return new Cuboid();
-
-//                 case ShapeType.Cylinder:
-//                     return new Cylinder();
-
-//                 case ShapeType.Sphere:
-//                     return new Sphere();
-
-//// lägg till random cases 2d & 3d sedan!
-
-
-
-//                 default:
-//                     throw new NotImplementedException();
-//             }
-//         } 
-
-
-      
+     
     } 
  } 
 

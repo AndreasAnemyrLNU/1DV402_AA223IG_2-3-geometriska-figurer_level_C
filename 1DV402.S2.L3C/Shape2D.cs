@@ -27,7 +27,15 @@ namespace _1DV402.S2.L3C
                 if(value <= 0)
                 {
                     //Kasta undantag om värdet är mindre än 0
-                    throw new ArgumentException();
+                    try
+                    {
+                        throw new ArgumentException("Fel! Du måste ange alla dimensioner i ett tal över 0!");
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                 }
                 _length = value;
             }
@@ -49,7 +57,14 @@ namespace _1DV402.S2.L3C
                 if (value <= 0)
                 {
                     //Kasta undantag om värdet är mindre än 0
-                    throw new ArgumentException();
+                    try
+                    {
+                        throw new ArgumentException("Fel! Du måste ange dimensioner i ett tal över 0!");
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
                 _width = value;
             }
