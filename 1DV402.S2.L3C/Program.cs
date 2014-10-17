@@ -229,8 +229,7 @@ namespace _1DV402.S2.L3C
         private static void ViewMenu()
         {        
                 Console.Clear();
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.ForegroundColor = ConsoleColor.White;
+                FormatHead();
                 Console.WriteLine(Extensions.CenterAlignString("Geometriska figurer", Properties.Resources.bHeadLine37));
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.WriteLine("{0}", Properties.Resources.aMenuCancel);
@@ -292,7 +291,7 @@ namespace _1DV402.S2.L3C
 
         static void Main(string[] args)
         {
-            Console.Title = "Geometriska figurer - nivå C";
+            Console.Title = Properties.Resources.cHeading;
 
             int index;
             ShapeType shapeType = ShapeType.Indefinite;
@@ -314,55 +313,53 @@ namespace _1DV402.S2.L3C
                     Console.WriteLine("\n FEL! Ange ett nummer mellan 0 och 8.\n");
                     Console.ResetColor();
                 }
-            } while (index == 0);
 
-            switch (index)
+                switch (index)
+                {
+                    case 1:
+                        shape = CreateShape(ShapeType.Rectangle);
+                        ViewShapeDetail(shape);
+                        break;
 
-            {
-                case 1:
-                    shape = CreateShape(ShapeType.Rectangle);
-                    ViewShapeDetail(shape);
-                    break;
+                    case 2:
+                         shape = CreateShape(ShapeType.Circle);
+                         ViewShapeDetail(shape);
+                        break;                   
 
-                case 2:
-                     shape = CreateShape(ShapeType.Circle);
-                     ViewShapeDetail(shape);
-                    break;                   
+                    case 3:
+                        shape = CreateShape(ShapeType.Ellipse);
+                        ViewShapeDetail(shape);
+                        break;
 
-                case 3:
-                    shape = CreateShape(ShapeType.Ellipse);
-                    ViewShapeDetail(shape);
-                    break;
+                    case 4:
+                        shape = CreateShape(ShapeType.Cuboid);
+                        ViewShapeDetail(shape);
+                        break;
 
-                case 4:
-                    shape = CreateShape(ShapeType.Cuboid);
-                    ViewShapeDetail(shape);
-                    break;
+                    case 5:
+                        shape = CreateShape(ShapeType.Cylinder);
+                        ViewShapeDetail(shape);
+                        break;
 
-                case 5:
-                    shape = CreateShape(ShapeType.Cylinder);
-                    ViewShapeDetail(shape);
-                    break;
+                    case 6:
+                        shape = CreateShape(ShapeType.Sphere);
+                        ViewShapeDetail(shape);
+                        break;
 
-                case 6:
-                    shape = CreateShape(ShapeType.Sphere);
-                    ViewShapeDetail(shape);
-                    break;
+                    case 7:
+                        Shape[] Shape2ds = Randomize2DShapes();
+                        Array.Sort(Shape2ds);
+                        ViewShapes(Shape2ds);
+                        break;
 
-                case 7:
-                    Shape[] Shape2ds = Randomize2DShapes();
-                    Array.Sort(Shape2ds);
-                    ViewShapes(Shape2ds);
-                    break;
+                    case 8:
+                        Shape[] Shape3ds = Randomize3DShapes();
+                        Array.Sort(Shape3ds);
+                        ViewShapes(Shape3ds);
+                        break;
+                }
 
-                case 8:
-                    Shape[] Shape3ds = Randomize3DShapes();
-                    Array.Sort(Shape3ds);
-                    ViewShapes(Shape3ds);
-                    break;
-            }
-
-            Console.Read();
+            }while (ContinueOnKeyPressed(index));
         }
 
         public static double RndDoubleGen()
@@ -375,16 +372,21 @@ namespace _1DV402.S2.L3C
             return randomizedDouble;
         }
 
-        private static void ContinueOnKeyPressed()
+        private static bool ContinueOnKeyPressed(int index)
         {
+            if(index == 0)
+            {
+                return false;
+            }
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.Write("\n   Tryck tangent för att fortsätta   ");
+            Console.Write("\n        Tryck tangent för att fortsätta      ");
             Console.ResetColor();
             Console.CursorVisible = false;
             Console.ReadKey(true);
             Console.Clear();
             Console.CursorVisible = true;
+            return true;
         }
 
         private static void FormatHead()

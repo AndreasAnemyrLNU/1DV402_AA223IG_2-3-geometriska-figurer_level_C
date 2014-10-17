@@ -156,4 +156,7 @@
   <data name="bHeadViewShapes3DHeading" xml:space="preserve">
     <value>Figur      Längd Bredd  Höjd   Mantelarea  Begränsn.area        Volym</value>
   </data>
+  <data name="cHeading" xml:space="preserve">
+    <value>Geometriska Figurer - Nivå c</value>
+  </data>
 </root>

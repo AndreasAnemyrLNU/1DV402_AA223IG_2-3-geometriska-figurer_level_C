@@ -176,5 +176,14 @@ namespace _1DV402.S2.L3C.Properties {
                 return ResourceManager.GetString("bHeadViewShapes3DHeading", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geometriska Figurer - Nivå c.
+        /// </summary>
+        internal static string cHeading {
+            get {
+                return ResourceManager.GetString("cHeading", resourceCulture);
+            }
+        }
     }
 }
