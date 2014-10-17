@@ -8,6 +8,11 @@ namespace _1DV402.S2.L3C
 {
     class Program
     {
+        //För varje gång ett rnd objekt rulla ökar slumtalsfröet med ETT
+        private static int seed;
+        //Variabel som håller referens till inläst objekt
+        private static Shape shape;
+
         private static Shape CreateShape(ShapeType shapeType)
         {
             switch (shapeType)
@@ -113,9 +118,39 @@ namespace _1DV402.S2.L3C
             return Shape2Ds;
         }
 
-        private static Shape3D[] Randomize3DShape()
+        private static Shape3D[] Randomize3DShapes()
         {
-            throw new NotImplementedException();
+            Random rndObjects = new Random(seed);
+
+            int nrOfObjectsToRandomize = rndObjects.Next(5, 20);
+
+            //Skapar en arry med rätt antal objekt
+            Shape3D[] Shape3Ds = new Shape3D[nrOfObjectsToRandomize];
+
+            for (int i = 0; i < nrOfObjectsToRandomize; i++)
+            {
+                //Slumpar ett ta från O till 2 typomvandlas till ett ShapeType enum
+                ShapeType shapeType = (ShapeType)rndObjects.Next(4, 7);
+
+                switch (shapeType)
+                {
+                    case ShapeType.Cuboid:
+                        Shape3Ds[i] = new Cuboid(RndDoubleGen(), RndDoubleGen(), RndDoubleGen());
+                        continue;
+
+                    case ShapeType.Cylinder:
+                        Shape3Ds[i] = new Cylinder(RndDoubleGen(), RndDoubleGen(), RndDoubleGen());
+                        continue;
+
+                    case ShapeType.Sphere:
+                        Shape3Ds[i] = new Sphere(RndDoubleGen());
+                        continue;
+                }
+            }
+            //Returnerner härmed en randomiserad shape3D array
+            //Eventuellt skulle man kunna ta bort seed++ då den eventuellt inte behövs i denna metoden           
+            seed++;
+            return Shape3Ds;  
         }
 
         private static double[] ReadDimensions(ShapeType shapetype)
@@ -238,7 +273,6 @@ namespace _1DV402.S2.L3C
 
         static void Main(string[] args)
         {
-
             Console.Title = "Geometriska figurer - nivå C";
 
             int index;
@@ -260,22 +294,52 @@ namespace _1DV402.S2.L3C
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\n FEL! Ange ett nummer mellan 0 och 8.\n");
                     Console.ResetColor();
+
+                    ContinueOnKeyPressed();
+
                 }
-            } while ((index == 0));
+            } while (index == 0);
 
+            switch (index)
 
-            //Testar här att läsa in vald shap shapetype enum från menyn
-            //Shape testarShape = CreateShape(shapeType);
-            //ViewShapeDetail(testarShape);
+            {
+                case 1:
+                    shape = CreateShape(ShapeType.Rectangle);
+                    break;
 
+                case 2:
+                     shape = CreateShape(ShapeType.Circle);
+                    break;                   
 
-            
-            Shape[] Shape2ds = Randomize2DShapes();
+                case 3:
+                    shape = CreateShape(ShapeType.Ellipse);
+                    break;
 
-            ViewShapes(Shape2ds);
+                case 4:
+                    shape = CreateShape(ShapeType.Cuboid);
+                    break;
 
+                case 5:
+                    shape = CreateShape(ShapeType.Cylinder);
+                    break;
 
+                case 6:
+                    shape = CreateShape(ShapeType.Sphere);
+                    break;
 
+                case 7:
+                    Shape[] Shape2ds = Randomize2DShapes();
+                    ViewShapes(Shape2ds);
+                    break;
+
+                case 8:
+                    Shape[] Shape3ds = Randomize3DShapes();
+                    ViewShapes(Shape3ds);
+                    break;
+            }
+
+            //Denna ska gå om val 1-6 är gjorda.... Då innehåller referensen ett objekt.....
+            ViewShapeDetail(shape);
             Console.Read();
         }
 
@@ -289,20 +353,17 @@ namespace _1DV402.S2.L3C
             return randomizedDouble;
         }
 
-        //För varje gång ett rnd objekt rulla ökar slumtalsfröet med ETT
-        private static int seed;
- 
-//         private static void ContinueOnKeyPressed() 
-//         { 
-//             Console.ForegroundColor = ConsoleColor.White; 
-//             Console.BackgroundColor = ConsoleColor.DarkBlue; 
-//             Console.Write("\n   Tryck tangent för att fortsätta   "); 
-//             Console.ResetColor(); 
-//             Console.CursorVisible = false; 
-//             Console.ReadKey(true); 
-//             Console.Clear(); 
-//             Console.CursorVisible = true; 
-//         } 
+        private static void ContinueOnKeyPressed()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.Write("\n   Tryck tangent för att fortsätta   ");
+            Console.ResetColor();
+            Console.CursorVisible = false;
+            Console.ReadKey(true);
+            Console.Clear();
+            Console.CursorVisible = true;
+        } 
 
      
     } 
