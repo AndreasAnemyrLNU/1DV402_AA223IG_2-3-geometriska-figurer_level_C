@@ -8,7 +8,7 @@ namespace _1DV402.S2.L3C
 {
 
 
-    public enum ShapeType { Indefinite, Rectangle, Circle, Ellipse, Cuboid, Cylinder, Sphere, };
+    public enum ShapeType { Indefinite, Rectangle, Circle, Ellipse, Cuboid, Cylinder, Sphere };
 
     public abstract class Shape
     {

@@ -197,16 +197,13 @@ namespace _1DV402.S2.L3C
 
             string dimensionsString = Console.ReadLine();
 
-            string[] dimensionsArr = dimensionsString.Split();
-
-            //Kontroller så att inget av värden är 0 eller lägra för då ska jag kaste ett fel
-
+                string[] dimensionsArr = dimensionsString.Split();
 
             for (int i = 0; i < dimensionsArr.Length; i++ )
             {
                 if (double.Parse(dimensionsArr[i]) <= 0)
                 {
-                    Console.WriteLine("Fel! Ett fel inträffade då figurens dimensioner tolkades");
+                    throw new FormatException("Fel! Ett fel inträffade då figurens dimensioner tolkades!");
                 }
             }
 
@@ -246,9 +243,13 @@ namespace _1DV402.S2.L3C
                 Console.ResetColor();
         }
 
-        private static void ViewMenuErrorMessage()
+        private static void ViewMenuErrorMessage(string errorMessage)
         {
-            throw new NotImplementedException();
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(errorMessage);
+;
+            Console.ResetColor();
         }
 
         private static void ViewShapeDetail(Shape shape)
@@ -293,7 +294,7 @@ namespace _1DV402.S2.L3C
         {
             Console.Title = Properties.Resources.cHeading;
 
-            int index;
+            int index = -1;
             ShapeType shapeType = ShapeType.Indefinite;
 
             //Här läser man in valet för shapen man vill göra
@@ -302,64 +303,88 @@ namespace _1DV402.S2.L3C
                 ViewMenu();
                 // Läser in en sträng som försöker tolkas till ett heltal; validerar sedan att 
                 // det inmatade heltalet är i det slutna intervallet mellan 0 och 8. 
-                if (int.TryParse(Console.ReadLine(), out index) && index >= 0 && index <= 8)
+
+
+
+                if (int.TryParse(Console.ReadLine(), out index) && index >= 1 && index <= 6)
                 {
                     shapeType = (ShapeType)index;
+
+                    try
+                    {
+                        switch (shapeType)
+                        {
+                            case ShapeType.Indefinite:
+                                break;
+
+                            case ShapeType.Rectangle:
+                                shape = CreateShape(ShapeType.Rectangle);
+                                ViewShapeDetail(shape);
+                                break;
+
+                            case ShapeType.Circle:
+                                shape = CreateShape(ShapeType.Circle);
+                                ViewShapeDetail(shape);
+                                break;
+
+                            case ShapeType.Ellipse:
+                                shape = CreateShape(ShapeType.Ellipse);
+                                ViewShapeDetail(shape);
+                                break;
+
+                            case ShapeType.Cuboid:
+                                shape = CreateShape(ShapeType.Cuboid);
+                                ViewShapeDetail(shape);
+                                break;
+
+                            case ShapeType.Cylinder:
+                                shape = CreateShape(ShapeType.Cylinder);
+                                ViewShapeDetail(shape);
+                                break;
+
+                            case ShapeType.Sphere:
+                                shape = CreateShape(ShapeType.Sphere);
+                                ViewShapeDetail(shape);
+                                break;
+                        }
+                    }
+                    catch 
+                    {
+                        ViewMenuErrorMessage("Fel! Ett fel inträffade när dimensioner skulle läsas in!");
+                    }
                 }
-                else
+
+                try
                 {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\n FEL! Ange ett nummer mellan 0 och 8.\n");
-                    Console.ResetColor();
-                }
-
-                switch (index)
-                {
-                    case 1:
-                        shape = CreateShape(ShapeType.Rectangle);
-                        ViewShapeDetail(shape);
-                        break;
-
-                    case 2:
-                         shape = CreateShape(ShapeType.Circle);
-                         ViewShapeDetail(shape);
-                        break;                   
-
-                    case 3:
-                        shape = CreateShape(ShapeType.Ellipse);
-                        ViewShapeDetail(shape);
-                        break;
-
-                    case 4:
-                        shape = CreateShape(ShapeType.Cuboid);
-                        ViewShapeDetail(shape);
-                        break;
-
-                    case 5:
-                        shape = CreateShape(ShapeType.Cylinder);
-                        ViewShapeDetail(shape);
-                        break;
-
-                    case 6:
-                        shape = CreateShape(ShapeType.Sphere);
-                        ViewShapeDetail(shape);
-                        break;
-
-                    case 7:
+                    if (index == 7)
+                    {
                         Shape[] Shape2ds = Randomize2DShapes();
                         Array.Sort(Shape2ds);
-                        ViewShapes(Shape2ds);
-                        break;
+                        ViewShapes(Shape2ds); ;
+                    }
+                }
+                catch
+                {
+                    ViewMenuErrorMessage("Ett fel inträffade när 2D figurer skulle slumpas fram!");
+                }
 
-                    case 8:
+                try
+                {
+                    if (index == 8)
+                    {
                         Shape[] Shape3ds = Randomize3DShapes();
                         Array.Sort(Shape3ds);
                         ViewShapes(Shape3ds);
-                        break;
+                    }
+                }
+                catch
+                {
+                    ViewMenuErrorMessage("Ett fel inträffade när 3D figurer skulle slumpas fram!");
                 }
 
             }while (ContinueOnKeyPressed(index));
+
+
         }
 
         public static double RndDoubleGen()
@@ -374,10 +399,11 @@ namespace _1DV402.S2.L3C
 
         private static bool ContinueOnKeyPressed(int index)
         {
-            if(index == 0)
+            if (0 == index)
             {
                 return false;
             }
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Write("\n        Tryck tangent för att fortsätta      ");
