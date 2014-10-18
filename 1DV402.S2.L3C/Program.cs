@@ -8,6 +8,8 @@ namespace _1DV402.S2.L3C
 {
     class Program
     {
+
+
         //För varje gång ett rnd objekt rulla ökar slumtalsfröet med ETT
         private static int seed;
         //Variabel som håller referens till inläst objekt
@@ -84,8 +86,10 @@ namespace _1DV402.S2.L3C
 
         private static Shape2D[] Randomize2DShapes()
                     //private static void Randomize2DShapes()
-        {
-            Random rndObjects = new Random(seed);
+        {         
+            Random rndObjects = new Random();
+
+            seed = rndObjects.Next();
 
             int nrOfObjectsToRandomize = rndObjects.Next(5, 21);
 
@@ -120,7 +124,9 @@ namespace _1DV402.S2.L3C
 
         private static Shape3D[] Randomize3DShapes()
         {
-            Random rndObjects = new Random(seed);
+            Random rndObjects = new Random();
+
+            seed = rndObjects.Next();
 
             int nrOfObjectsToRandomize = rndObjects.Next(5, 21);
 
@@ -162,27 +168,27 @@ namespace _1DV402.S2.L3C
             {
 
                 case ShapeType.Circle:
-                    doubles = ReadDoublesGreaterThanZero("Ange figurens diameter:", 1);
+                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCircle, 1);
                     break;
 
                 case ShapeType.Cuboid:
-                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd, bredd och höjd:", 3);
+                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCuboid, 3);
                     break;
 
                 case ShapeType.Cylinder:
-                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd, bredd och höjd:", 3);
+                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCylinder, 3);
                     break;
 
                 case ShapeType.Ellipse:
-                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd och bredd:", 2);
+                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimEllipse, 2);
                     break;
 
                 case ShapeType.Rectangle:
-                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd och bredd:", 2);
+                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimRectangle, 2);
                     break;
 
                 case ShapeType.Sphere:
-                    doubles = ReadDoublesGreaterThanZero("Ange figurens längd, bredd och djup:", 3);
+                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimSphere, 3);
                     break;
                 default:
                     doubles = null;
@@ -294,7 +300,7 @@ namespace _1DV402.S2.L3C
         {
             Console.Title = Properties.Resources.cHeading;
 
-            int index = -1;
+            int index;
             ShapeType shapeType = ShapeType.Indefinite;
 
             //Här läser man in valet för shapen man vill göra
@@ -303,8 +309,6 @@ namespace _1DV402.S2.L3C
                 ViewMenu();
                 // Läser in en sträng som försöker tolkas till ett heltal; validerar sedan att 
                 // det inmatade heltalet är i det slutna intervallet mellan 0 och 8. 
-
-
 
                 if (int.TryParse(Console.ReadLine(), out index) && index >= 1 && index <= 6)
                 {
@@ -318,33 +322,27 @@ namespace _1DV402.S2.L3C
                                 break;
 
                             case ShapeType.Rectangle:
-                                shape = CreateShape(ShapeType.Rectangle);
-                                ViewShapeDetail(shape);
+                                CreateShapeAndView(shapeType);
                                 break;
 
                             case ShapeType.Circle:
-                                shape = CreateShape(ShapeType.Circle);
-                                ViewShapeDetail(shape);
+                                CreateShapeAndView(shapeType);
                                 break;
 
                             case ShapeType.Ellipse:
-                                shape = CreateShape(ShapeType.Ellipse);
-                                ViewShapeDetail(shape);
+                                CreateShapeAndView(shapeType);
                                 break;
 
                             case ShapeType.Cuboid:
-                                shape = CreateShape(ShapeType.Cuboid);
-                                ViewShapeDetail(shape);
+                                CreateShapeAndView(shapeType);
                                 break;
 
                             case ShapeType.Cylinder:
-                                shape = CreateShape(ShapeType.Cylinder);
-                                ViewShapeDetail(shape);
+                                CreateShapeAndView(shapeType);
                                 break;
 
                             case ShapeType.Sphere:
-                                shape = CreateShape(ShapeType.Sphere);
-                                ViewShapeDetail(shape);
+                                CreateShapeAndView(shapeType);
                                 break;
                         }
                     }
@@ -353,10 +351,9 @@ namespace _1DV402.S2.L3C
                         ViewMenuErrorMessage("Fel! Ett fel inträffade när dimensioner skulle läsas in!");
                     }
                 }
-
+                else if (index == 7)
                 try
                 {
-                    if (index == 7)
                     {
                         Shape[] Shape2ds = Randomize2DShapes();
                         Array.Sort(Shape2ds);
@@ -367,10 +364,9 @@ namespace _1DV402.S2.L3C
                 {
                     ViewMenuErrorMessage("Ett fel inträffade när 2D figurer skulle slumpas fram!");
                 }
-
+                else if (index == 8)
                 try
                 {
-                    if (index == 8)
                     {
                         Shape[] Shape3ds = Randomize3DShapes();
                         Array.Sort(Shape3ds);
@@ -381,19 +377,20 @@ namespace _1DV402.S2.L3C
                 {
                     ViewMenuErrorMessage("Ett fel inträffade när 3D figurer skulle slumpas fram!");
                 }
-
+                else
+                {
+                    ViewMenuErrorMessage("Fel! Ange ett giltigt värde för menyn. Försök igen.");
+                }
             }while (ContinueOnKeyPressed(index));
-
-
         }
 
         public static double RndDoubleGen()
         {
             Random rnd = new Random(seed);
             int first = rnd.Next(0, 100);
-            double second =rnd.NextDouble();
+            double second = rnd.NextDouble();
             double randomizedDouble = first + second;
-            seed++;
+            seed = rnd.Next();
             return randomizedDouble;
         }
 
@@ -421,7 +418,12 @@ namespace _1DV402.S2.L3C
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-     
+        private static void CreateShapeAndView(ShapeType shapeType)
+        {
+            Console.Clear();
+            shape = CreateShape(shapeType);
+            ViewShapeDetail(shape);
+        }    
     } 
  } 
 

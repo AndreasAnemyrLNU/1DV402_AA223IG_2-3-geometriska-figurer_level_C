@@ -159,4 +159,22 @@
   <data name="cHeading" xml:space="preserve">
     <value>Geometriska Figurer - Nivå c</value>
   </data>
+  <data name="dDimCircle" xml:space="preserve">
+    <value>Ange figurens diameter: </value>
+  </data>
+  <data name="dDimCuboid" xml:space="preserve">
+    <value>Ange figurens längd, bredd och höjd: </value>
+  </data>
+  <data name="dDimCylinder" xml:space="preserve">
+    <value>Ange figurens längd, bredd och höjd: </value>
+  </data>
+  <data name="dDimEllipse" xml:space="preserve">
+    <value>Ange figurens längd och bredd: </value>
+  </data>
+  <data name="dDimRectangle" xml:space="preserve">
+    <value>Ange figurens längd och bredd: </value>
+  </data>
+  <data name="dDimSphere" xml:space="preserve">
+    <value>Ange figurens längd, bredd och djup: </value>
+  </data>
 </root>

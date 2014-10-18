@@ -185,5 +185,59 @@ namespace _1DV402.S2.L3C.Properties {
                 return ResourceManager.GetString("cHeading", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ange figurens diameter: .
+        /// </summary>
+        internal static string dDimCircle {
+            get {
+                return ResourceManager.GetString("dDimCircle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ange figurens längd, bredd och höjd: .
+        /// </summary>
+        internal static string dDimCuboid {
+            get {
+                return ResourceManager.GetString("dDimCuboid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ange figurens längd, bredd och höjd: .
+        /// </summary>
+        internal static string dDimCylinder {
+            get {
+                return ResourceManager.GetString("dDimCylinder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ange figurens längd och bredd: .
+        /// </summary>
+        internal static string dDimEllipse {
+            get {
+                return ResourceManager.GetString("dDimEllipse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ange figurens längd och bredd: .
+        /// </summary>
+        internal static string dDimRectangle {
+            get {
+                return ResourceManager.GetString("dDimRectangle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ange figurens längd, bredd och djup: .
+        /// </summary>
+        internal static string dDimSphere {
+            get {
+                return ResourceManager.GetString("dDimSphere", resourceCulture);
+            }
+        }
     }
 }
