@@ -9,8 +9,13 @@ namespace _1DV402.S2.L3C
     {
         protected Shape2D _baseShape;
 
+        /// <summary>
+        /// Height field of shape
+        /// </summary>
         private double _height;
-
+        /// <summary>
+        /// Heigth prop of shape. Set prop controls incoming valut to be gt than 0
+        /// </summary>
         public double Height
         {
             get
@@ -21,7 +26,6 @@ namespace _1DV402.S2.L3C
             {
                 if (value <= 0)
                 {
-                    //Kasta undantag om värdet är mindre än 0
                     throw new ArgumentException("Ange en höjd större än 0");
                 }
                 _height = value;
@@ -29,13 +33,23 @@ namespace _1DV402.S2.L3C
 
 
         }
-
+        /// <summary>
+        /// Return the Mantelarea of shape
+        /// </summary>
         public abstract double MantelArea { get; }
-
+        /// <summary>
+        /// Returns TotalSurfaceArea of shape
+        /// </summary>
         public abstract double TotalSurfaceArea { get; }
-
+        /// <summary>
+        /// Returns the Volume of shape
+        /// </summary>
         public abstract double Volume { get; }
-
+        /// <summary>
+        /// Implemented becaus of Icomparable
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if (null == obj)
@@ -52,17 +66,25 @@ namespace _1DV402.S2.L3C
             {
                 throw new ArgumentException("Object is not a shape");
             }
-            //Frågan är om ytterligare sortering ska göras?
+            //Look further at "CompareTo". Maybe a better impl can be done?
             return Volume.CompareTo(other.Volume);
         }
-
+        /// <summary>
+        /// Construcktor in cooperation with base constructor
+        /// </summary>
+        /// <param name="shapeType"></param>
+        /// <param name="baseShape"></param>
+        /// <param name="height"></param>
         protected Shape3D(ShapeType shapeType, Shape2D baseShape, double height)
             :base(shapeType)
         {
             _baseShape = baseShape;
             Height = height;
         }
-
+        /// <summary>
+        /// ToString override to better match how output will look
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return ToString("G");

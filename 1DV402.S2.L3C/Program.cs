@@ -9,12 +9,20 @@ namespace _1DV402.S2.L3C
     class Program
     {
 
-
-        //För varje gång ett rnd objekt rulla ökar slumtalsfröet med ETT
+        /// <summary>
+        /// Makes it possible to randomizing the seed becaus of it's static in this class. 
+        /// Before leaving a rnd obj to the garbage cllector a new seed should be randomized wit next()
+        /// </summary>
         private static int seed;
-        //Variabel som håller referens till inläst objekt
+        /// <summary>
+        /// Holds reference to shape object
+        /// </summary>
         private static Shape shape;
-
+        /// <summary>
+        /// Switch that uses the enums in shape.cs
+        /// </summary>
+        /// <param name="shapeType"></param>
+        /// <returns></returns>
         private static Shape CreateShape(ShapeType shapeType)
         {
             switch (shapeType)
@@ -83,7 +91,10 @@ namespace _1DV402.S2.L3C
             }
 
         }
-
+        /// <summary>
+        /// Method called when index 7 is choosen in the menu
+        /// </summary>
+        /// <returns></returns>
         private static Shape2D[] Randomize2DShapes()
                     //private static void Randomize2DShapes()
         {         
@@ -93,12 +104,12 @@ namespace _1DV402.S2.L3C
 
             int nrOfObjectsToRandomize = rndObjects.Next(5, 21);
 
-            //Skapar en arry med rätt antal objekt
+
             Shape2D[] Shape2Ds = new Shape2D[nrOfObjectsToRandomize];
 
             for (int i = 0; i < nrOfObjectsToRandomize; i++)
             {
-                //Slumpar ett ta från O till 2 typomvandlas till ett ShapeType enum
+                //Rand 0,1 or 2. Typecasts to an shapetype enum
                 ShapeType shapeType = (ShapeType)rndObjects.Next(1,4);
            
                 switch (shapeType)
@@ -116,8 +127,7 @@ namespace _1DV402.S2.L3C
                     continue;
                 }
             }
-            //Returnerner härmed en randomiserad shape2D array
-            //Eventuellt skulle man kunna ta bort seed++ då den eventuellt inte behövs i denna metoden           
+            //Returns herenow a randomized array of 2D shapes          
             seed++;
             return Shape2Ds;
         }
@@ -130,12 +140,12 @@ namespace _1DV402.S2.L3C
 
             int nrOfObjectsToRandomize = rndObjects.Next(5, 21);
 
-            //Skapar en arry med rätt antal objekt
+            //Creates an array with  of objects between 5 & 20
             Shape3D[] Shape3Ds = new Shape3D[nrOfObjectsToRandomize];
 
             for (int i = 0; i < nrOfObjectsToRandomize; i++)
             {
-                //Slumpar ett ta från O till 2 typomvandlas till ett ShapeType enum
+                //Rand 4,5 or 6 and typecast explicite to a sahpetype from shapetype enums
                 ShapeType shapeType = (ShapeType)rndObjects.Next(4, 7);
 
                 switch (shapeType)
@@ -153,68 +163,60 @@ namespace _1DV402.S2.L3C
                         continue;
                 }
             }
-            //Returnerner härmed en randomiserad shape3D array
-            //Eventuellt skulle man kunna ta bort seed++ då den eventuellt inte behövs i denna metoden           
+            //Returns here a randomizes array of 3D shapes          
             seed++;
             return Shape3Ds;  
         }
-
         private static double[] ReadDimensions(ShapeType shapetype)
         {
+                double[] doubles;
 
-            double[] doubles;
+                switch (shapetype)
+                {
 
-            switch (shapetype)
-            {
+                    case ShapeType.Circle:
+                        doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCircle, 1);
+                        break;
 
-                case ShapeType.Circle:
-                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCircle, 1);
-                    break;
+                    case ShapeType.Cuboid:
+                        doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCuboid, 3);
+                        break;
 
-                case ShapeType.Cuboid:
-                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCuboid, 3);
-                    break;
+                    case ShapeType.Cylinder:
+                        doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCylinder, 3);
+                        break;
 
-                case ShapeType.Cylinder:
-                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimCylinder, 3);
-                    break;
+                    case ShapeType.Ellipse:
+                        doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimEllipse, 2);
+                        break;
 
-                case ShapeType.Ellipse:
-                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimEllipse, 2);
-                    break;
+                    case ShapeType.Rectangle:
+                        doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimRectangle, 2);
+                        break;
 
-                case ShapeType.Rectangle:
-                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimRectangle, 2);
-                    break;
-
-                case ShapeType.Sphere:
-                    doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimSphere, 3);
-                    break;
-                default:
-                    doubles = null;
-                    break;
-            }
-            return doubles;
+                    case ShapeType.Sphere:
+                        doubles = ReadDoublesGreaterThanZero(Properties.Resources.dDimSphere, 1);
+                        break;
+                    default:
+                        doubles = null;
+                        break;
+                }
+                return doubles;
         }
 
         private static double[] ReadDoublesGreaterThanZero(string prompt, int numberOfvalues = 1)
         {
-            Console.Write("{0}", prompt);
+                Console.Write("{0}", prompt);
 
-            string dimensionsString = Console.ReadLine();
+                string dimensionsString = Console.ReadLine();
 
                 string[] dimensionsArr = dimensionsString.Split();
 
-            for (int i = 0; i < dimensionsArr.Length; i++ )
-            {
-                if (double.Parse(dimensionsArr[i]) <= 0)
-                {
-                    throw new FormatException("Fel! Ett fel inträffade då figurens dimensioner tolkades!");
-                }
-            }
+
 
                 switch (numberOfvalues)
                 {
+
                     case 1:
                         return new double[1] { double.Parse(dimensionsArr[0]) };
 
@@ -222,12 +224,12 @@ namespace _1DV402.S2.L3C
                         return new double[2] { double.Parse(dimensionsArr[0]), double.Parse(dimensionsArr[1]) };
 
                     case 3:
-                        return new double[3] { double.Parse(dimensionsArr[0]) , double.Parse(dimensionsArr[1]) , double.Parse(dimensionsArr[2]) };
-                   
-                    default:
-                        return null;
-                }       
+                        return new double[3] { double.Parse(dimensionsArr[0]), double.Parse(dimensionsArr[1]), double.Parse(dimensionsArr[2]) };
+                } 
+
+            return null;
         }
+
 
         private static void ViewMenu()
         {        
@@ -346,37 +348,36 @@ namespace _1DV402.S2.L3C
                                 break;
                         }
                     }
-                    catch 
-                    {
-                        ViewMenuErrorMessage("Fel! Ett fel inträffade när dimensioner skulle läsas in!");
+                    catch (IndexOutOfRangeException){
+                        ViewMenuErrorMessage("Fel! Var noga med att ange ett tal för samtliga dimensioner för gällande figur");
                     }
+                    catch (ArgumentException e)
+                    {
+                        ViewMenuErrorMessage(e.Message);
+                    }
+                    catch (FormatException)
+                    {
+                        ViewMenuErrorMessage("Fel!  Ett fel inträffade då figurens dimensioner tolkades.");
+                    }
+                    catch (Exception e)
+                    {
+                        ViewMenuErrorMessage(e.Message);
+                    }
+
                 }
                 else if (index == 7)
-                try
-                {
                     {
                         Shape[] Shape2ds = Randomize2DShapes();
                         Array.Sort(Shape2ds);
                         ViewShapes(Shape2ds); ;
                     }
-                }
-                catch
-                {
-                    ViewMenuErrorMessage("Ett fel inträffade när 2D figurer skulle slumpas fram!");
-                }
                 else if (index == 8)
-                try
-                {
+
                     {
                         Shape[] Shape3ds = Randomize3DShapes();
                         Array.Sort(Shape3ds);
                         ViewShapes(Shape3ds);
                     }
-                }
-                catch
-                {
-                    ViewMenuErrorMessage("Ett fel inträffade när 3D figurer skulle slumpas fram!");
-                }
                 else
                 {
                     ViewMenuErrorMessage("Fel! Ange ett giltigt värde för menyn. Försök igen.");
@@ -393,9 +394,14 @@ namespace _1DV402.S2.L3C
             seed = rnd.Next();
             return randomizedDouble;
         }
-
+        /// <summary>
+        /// Methos used by do while in menu...
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private static bool ContinueOnKeyPressed(int index)
         {
+            // index == 0 is equal to "cancel application"
             if (0 == index)
             {
                 return false;

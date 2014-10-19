@@ -35,7 +35,7 @@ namespace _1DV402.S2.L3C
 
         public static string CenterAlignString(this string s, string other)
         {
-            //Centretar en rubrik med ojämn textsträng other
+            //Centr a string if letters of string are odd
             if (s.Length % 2 == 0)
             {
                 string str = other;
@@ -57,7 +57,7 @@ namespace _1DV402.S2.L3C
                 str += "\n";
                 return str;
             }
-            //Centretar en rubrik med ojämn textsträng other
+            // Centr a string if letters are even
             else
             {
                 string str = other;

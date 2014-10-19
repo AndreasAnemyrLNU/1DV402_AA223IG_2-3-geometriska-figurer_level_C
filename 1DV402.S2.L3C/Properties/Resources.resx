@@ -175,6 +175,6 @@
     <value>Ange figurens längd och bredd: </value>
   </data>
   <data name="dDimSphere" xml:space="preserve">
-    <value>Ange figurens längd, bredd och djup: </value>
+    <value>Ange figurens diameter: </value>
   </data>
 </root>

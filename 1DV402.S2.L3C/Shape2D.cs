@@ -7,15 +7,24 @@ namespace _1DV402.S2.L3C
 {
     public abstract class Shape2D : Shape, IComparable
     {
-        //Figurens längd
+        /// <summary>
+        /// Length of Shape
+        /// </summary>
         private double _length;
-        //Figurens bredd
+        /// <summary>
+        /// Width of Shape
+        /// </summary>
         private double _width;
-        //Abstrakt method som måste implementeras i klass som ärver från denna
+        /// <summary>
+        /// Area of Shape
+        /// </summary>
         public abstract double Area
         {
             get;
         }
+        /// <summary>
+        /// Length Property of Shape. Set prop checks incoming vakue gt 0.
+        /// </summary>
         public double Length
         {
             get
@@ -24,28 +33,24 @@ namespace _1DV402.S2.L3C
             }
             set
             {
+               
                 if(value <= 0)
-                {
-                    //Kasta undantag om värdet är mindre än 0
-                    try
-                    {
-                        throw new ArgumentException("Fel! Du måste ange alla dimensioner i ett tal över 0!");
-                    }
-                    catch (ArgumentException ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
-
+                {                
+                    throw new ArgumentException("Fel! Du måste ange alla dimensioner i ett tal över 0!");
                 }
                 _length = value;
             }
         }
-
+        /// <summary>
+        /// Perimeter of Shape
+        /// </summary>
         public abstract double Perimeter
         {
             get;
         }
-
+        /// <summary>
+        /// Width Property of shape. Set prop checks incoming value gt 0.
+        /// </summary>
         public double Width
         {
             get
@@ -56,20 +61,16 @@ namespace _1DV402.S2.L3C
             {
                 if (value <= 0)
                 {
-                    //Kasta undantag om värdet är mindre än 0
-                    try
-                    {
-                        throw new ArgumentException("Fel! Du måste ange dimensioner i ett tal över 0!");
-                    }
-                    catch (ArgumentException ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                    throw new ArgumentException("Fel! Du måste ange dimensioner i ett tal över 0!");
                 }
                 _width = value;
             }
         }
-
+        /// <summary>
+        /// Method implemented becaous of IComparable
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if(null == obj)
@@ -86,17 +87,25 @@ namespace _1DV402.S2.L3C
             {
                 throw new ArgumentException("Object is not a shape");
             }
-            //Frågan är om ytterligare sortering ska göras?
+            //Maybe work further wit this method for better functionality
             return Area.CompareTo(other.Area);
         }
-
+        /// <summary>
+        /// Constructor in cooperation with the base constructor
+        /// </summary>
+        /// <param name="shapeType"></param>
+        /// <param name="length"></param>
+        /// <param name="width"></param>
         protected Shape2D(ShapeType shapeType, double length, double width)
             :base(shapeType)
         {
             Length =length;
             Width = width;
         }
-
+        /// <summary>
+        /// ToString overrided for output
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return ToString("G");

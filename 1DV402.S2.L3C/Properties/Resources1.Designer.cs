@@ -232,7 +232,7 @@ namespace _1DV402.S2.L3C.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ange figurens längd, bredd och djup: .
+        ///   Looks up a localized string similar to Ange figurens diameter: .
         /// </summary>
         internal static string dDimSphere {
             get {

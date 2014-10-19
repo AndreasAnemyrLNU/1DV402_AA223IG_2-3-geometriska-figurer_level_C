@@ -27,12 +27,19 @@ namespace _1DV402.S2.L3C
         {
             get 
             {
-                    return _baseShape.Area * (4/3) * Height;
+                double radius = _baseShape.Width / 2;
+                
+                //Formel för att räkna ut volym på en sfär.
+                return 4 * Math.PI * Math.Pow(radius, 3) / 3;
+
+
+                // Formel enligt handledning 4 / 3 * basarea * r
+                //return 4 / 3 * _baseShape.Area * radius;
             }
         }
 
         public Sphere(double radius)
-            : base(ShapeType.Sphere, new Ellipse(radius, radius), radius)
+            : base(ShapeType.Sphere, new Ellipse(radius), radius)
         {
            //Empty 
         }

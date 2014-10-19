@@ -7,7 +7,6 @@ namespace _1DV402.S2.L3C
 {
     public class Ellipse : Shape2D
     {
-        //Ellipse formel are PI * A * B
         public override double Area
         {
             get
